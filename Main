@@ -1,0 +1,36 @@
+import pygame,sys
+from pygame.locals import *
+
+import time,random
+
+
+pygame.init()
+
+##color declarations:
+#                             R   G    B
+BLACK             =  (   0,   0,    0)
+WHITE             =  ( 255,255, 255,)
+THICK_GRASS      =    (25,107,47)
+THIN_GRASS=     (72,137,62)
+DIRT=                  (86,77,64)
+
+
+SIZE= (700,500) ## probably make it fullscreen, but till then gl
+
+clk= pygame.time.Clock()
+
+screen = pygame.display.set_mode(SIZE)
+
+pygame.display.set_caption("Laidana")
+
+done= False
+while not done:
+    for e in pygame.event.get():
+        if e.type == QUIT:
+            pygame.quit()
+            done= true
+    screen.fill(THICK_GRASS)
+    pygame.display.flip()
+    clk.tick(60)
+
+pygame.quit()
