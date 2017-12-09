@@ -7,30 +7,50 @@ import time,random
 pygame.init()
 
 ##color declarations:
+COLOR={
 #                             R   G    B
-BLACK             =  (   0,   0,    0)
-WHITE             =  ( 255,255, 255,)
-THICK_GRASS      =    (25,107,47)
-THIN_GRASS=     (72,137,62)
-DIRT=                  (86,77,64)
+"BLACK"            :  (   0,   0,    0),
+"WHITE"           :  ( 255,255, 255,),
+"THICK_GRASS":    (25,107,47),
+"THIN_GRASS":    (72,137,62),
+"DIRT":                 (86,77,64)
+}
 
+SIZE= (700,800) ## probably make it fullscreen, but till then gl
 
-SIZE= (700,500) ## probably make it fullscreen, but till then gl
+##-============================
+
+##class
+class Game(object):
+    def __init__(self):
+        self.game_over=False
+        
+    def all_events(self):
+        for e in pygame.event.get():
+            if e.type==QUIT:
+                return True
+            
+##    def logic(self,time):
+
+    def draw(self, screen):
+        screen.fill(COLOR["DIRT"])
+        pygame.display.flip()    
+
+##=============================
+
 
 clk= pygame.time.Clock()
 
 screen = pygame.display.set_mode(SIZE)
 
-pygame.display.set_caption("Laidana")
+pygame.display.set_caption("Game jam")
+
+game =Game()
 
 done= False
 while not done:
-    for e in pygame.event.get():
-        if e.type == QUIT:
-            pygame.quit()
-            done= true
-    screen.fill(THICK_GRASS)
-    pygame.display.flip()
+    done=game.all_events()
+    game.draw(screen)
     clk.tick(60)
 
 pygame.quit()
