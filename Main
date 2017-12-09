@@ -1,7 +1,7 @@
 import pygame,sys
 from pygame.locals import *
 
-import time,random
+import time,random,Locations
 
 
 pygame.init()
@@ -16,7 +16,7 @@ COLOR={
 "DIRT":                 (86,77,64)
 }
 
-SIZE= (700,800) ## probably make it fullscreen, but till then gl
+SIZE= (700,700) ## probably make it fullscreen, but till then gl
 
 ##-============================
 
@@ -24,6 +24,9 @@ SIZE= (700,800) ## probably make it fullscreen, but till then gl
 class Game(object):
     def __init__(self):
         self.game_over=False
+        self.test=Locations.Location()
+        self.all_sprites_on_screen=pygame.sprite.Group()
+        self.all_sprites_on_screen.add(self.test)
         
     def all_events(self):
         for e in pygame.event.get():
@@ -34,6 +37,7 @@ class Game(object):
 
     def draw(self, screen):
         screen.fill(COLOR["DIRT"])
+        self.all_sprites_on_screen.draw(screen)
         pygame.display.flip()    
 
 ##=============================
