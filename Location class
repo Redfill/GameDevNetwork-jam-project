@@ -1,0 +1,13 @@
+import pygame
+
+pygame.init()
+
+class Location(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image=pygame.image.load("classroom.png")
+        self.rect=self.image.get_rect()
+        
+
+pygame.quit()
+
